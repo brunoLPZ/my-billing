@@ -1,0 +1,21 @@
+{
+  "name": "my-billing",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "build": "tsc",
+    "zip": "rm deploy.zip || true && zip -r deploy.zip billing-job lib node_modules .env .funcignore host.json package-lock.json package.json",
+    "deploy": "az functionapp deployment source config-zip -g my-billing-rg -n my-billing-func --src deploy.zip"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.10",
+    "date-fns-tz": "^1.3.1",
+    "got": "^11.8.3",
+    "mongodb": "^4.4.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
